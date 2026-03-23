@@ -1,0 +1,118 @@
+/* ===== CINDERELLA — ANIMATIONS & EFFECTS ===== */
+
+/* Gold shimmer effect on hover elements */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.gold-shimmer {
+  background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+
+/* Float effect for decorative elements */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-8px) rotate(1deg); }
+  66% { transform: translateY(-4px) rotate(-1deg); }
+}
+
+.float-anim { animation: float 6s ease-in-out infinite; }
+
+/* Ripple on button click */
+@keyframes ripple {
+  0% { transform: scale(0); opacity: 0.6; }
+  100% { transform: scale(3); opacity: 0; }
+}
+
+.btn-primary { overflow: hidden; }
+.btn-primary .ripple {
+  position: absolute; border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+  pointer-events: none;
+  animation: ripple 0.6s ease-out forwards;
+}
+
+/* Staggered reveal for service cards */
+.service-card:nth-child(1) { transition-delay: 0s; }
+.service-card:nth-child(2) { transition-delay: 0.1s; }
+.service-card:nth-child(3) { transition-delay: 0.2s; }
+.service-card:nth-child(4) { transition-delay: 0.3s; }
+.service-card:nth-child(5) { transition-delay: 0.4s; }
+.service-card:nth-child(6) { transition-delay: 0.5s; }
+
+/* Gradient border animation */
+@keyframes borderGlow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+.glow-border {
+  position: relative;
+}
+.glow-border::after {
+  content: '';
+  position: absolute; inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, var(--gold), transparent, var(--gold));
+  opacity: 0.3;
+  animation: borderGlow 3s ease-in-out infinite;
+  z-index: -1;
+}
+
+/* Image hover zoom with filter transition */
+.img-hover {
+  overflow: hidden;
+}
+.img-hover img {
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              filter 0.4s ease;
+}
+.img-hover:hover img {
+  transform: scale(1.06);
+  filter: brightness(1.05) saturate(1.15) contrast(1.05);
+}
+
+/* Text split animation */
+@keyframes charSlideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.char-animate .char {
+  display: inline-block;
+  animation: charSlideUp 0.5s ease both;
+}
+
+/* Pulse ring for CTA */
+@keyframes pulseRing {
+  0% { box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.4); }
+  70% { box-shadow: 0 0 0 12px rgba(201, 168, 76, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(201, 168, 76, 0); }
+}
+
+.pulse-ring { animation: pulseRing 2s ease-in-out infinite; }
+
+/* Smooth page transition */
+.page-transition {
+  position: fixed; inset: 0;
+  background: var(--forest-dark);
+  z-index: 9999;
+  transform: translateY(100%);
+  transition: transform 0.5s cubic-bezier(0.86, 0, 0.07, 1);
+}
+.page-transition.active { transform: translateY(0); }
+
+/* Scrollbar styling */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--forest); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+
+/* Selection color */
+::selection { background: var(--gold); color: var(--forest-dark); }
